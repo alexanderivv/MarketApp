@@ -6,7 +6,6 @@ class MainViewController: UIViewController {
     var products = [Product]()
     var selectedCategory: String?
     var filteredProducts: [Product] = []
-    var productIndexes: [Int: Int] = [:]
     private var activityIndicator: UIActivityIndicatorView?
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -39,11 +38,6 @@ class MainViewController: UIViewController {
                         self?.filteredProducts = products.filter { $0.category == selectedCategory }
                     } else {
                         self?.filteredProducts = products
-                    }
-                    
-                    self?.productIndexes.removeAll()
-                    for (index, product) in self?.filteredProducts.enumerated() ?? [].enumerated() {
-                        self?.productIndexes[product.id] = index
                     }
                     
                     self?.tableView.reloadData()

@@ -2,6 +2,8 @@ import UIKit
 
 class ProductDetailViewController: UIViewController {
     
+    var product: Product?
+    
     @IBOutlet weak var nameProductLabel: UILabel!
     @IBOutlet weak var imageProduct: UIImageView!
     @IBOutlet weak var descriptionProduct: UITextView!

@@ -45,12 +45,12 @@ class UserManager {
     }
     
     func saveUserCart(_ cart: Cart, forUser userId: Int) {
-            CartManager.shared.saveCart(cart, forUser: userId)
-        }
+        CartManager.shared.saveCart(cart, forUser: userId)
+    }
     
     func loadUserCart(forUser userId: Int) -> Cart? {
-            return CartManager.shared.loadCart(forUser: userId)
-        }
+        return CartManager.shared.loadCart(forUser: userId)
+    }
 
     private func saveUsersToUserDefaults() {
         if let encodedData = try? PropertyListEncoder().encode(users) {

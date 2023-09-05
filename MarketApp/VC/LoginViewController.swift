@@ -8,26 +8,26 @@ class LoginViewController: UIViewController {
     private let userManager = UserManager.shared
     
     override func viewDidLoad() {
-            super.viewDidLoad()
+        super.viewDidLoad()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-                view.addGestureRecognizer(tapGesture)
+        view.addGestureRecognizer(tapGesture)
         
         loginTextField.delegate = self
         passwordTextField.delegate = self
-            
+        
         setupPasswordTextField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            
-            loginTextField.text = ""
-            passwordTextField.text = ""
-        }
+        super.viewWillAppear(animated)
+        
+        loginTextField.text = ""
+        passwordTextField.text = ""
+    }
 
     @IBAction func loginButtonTapped(_ sender: Any) {
-            loginProfile()
+        loginProfile()
     }
     
     private func setupPasswordTextField() {
@@ -41,20 +41,20 @@ class LoginViewController: UIViewController {
     }
     
     private func loginProfile() {
-            guard let username = loginTextField.text, let password = passwordTextField.text else { return }
+        guard let username = loginTextField.text, let password = passwordTextField.text else { return }
 
-            if let user = userManager.authenticateUser(username: username, password: password) {
-                handleSuccessfulLogin(with: user)
-            } else {
-                showAlert(message: "Введены неправильные данные пользователя")
-            }
+        if let user = userManager.authenticateUser(username: username, password: password) {
+            handleSuccessfulLogin(with: user)
+        } else {
+            showAlert(message: "Введены неправильные данные пользователя")
         }
+    }
     
     private func showAlert(message: String) {
-            let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
+        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     
     private func handleSuccessfulLogin(with user: User) {
         userManager.currentUser = user
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func hideKeyboard() {
-            view.endEditing(true)
+        view.endEditing(true)
     }
     
     @objc private func togglePasswordVisibility() {

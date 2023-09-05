@@ -116,11 +116,11 @@ class MainViewController: UIViewController {
     }
     
     private func setupActivityIndicator() {
-            let indicator = UIActivityIndicatorView(style: .large)
-            indicator.center = view.center
-            indicator.hidesWhenStopped = true
-            view.addSubview(indicator)
-            activityIndicator = indicator
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.center = view.center
+        indicator.hidesWhenStopped = true
+        view.addSubview(indicator)
+        activityIndicator = indicator
     }
 }
 

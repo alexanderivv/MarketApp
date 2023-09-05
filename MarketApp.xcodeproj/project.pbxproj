@@ -101,10 +101,10 @@
 				1121D0AE2A72C46300F5C85C /* Main.storyboard */,
 				117B9E992A914D1500B82221 /* CustomCells */,
 				110F62672A81A14200F04546 /* TabBarController.swift */,
+				116471A82AA7B28800B667AC /* Structures */,
 				1121D0B12A72C46400F5C85C /* Assets.xcassets */,
 				1121D0B32A72C46400F5C85C /* LaunchScreen.storyboard */,
 				1121D0B62A72C46400F5C85C /* Info.plist */,
-				116471A82AA7B28800B667AC /* Structures */,
 			);
 			path = MarketApp;
 			sourceTree = "<group>";

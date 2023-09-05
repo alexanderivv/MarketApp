@@ -18,14 +18,15 @@ class ProductDetailViewController: UIViewController {
 
     @IBAction func addToCart(_ sender: Any) {
         if let product = product {
-                CartManager.shared.addToCart(product)
+            CartManager.shared.addToCart(product)
             
             if let user = UserManager.shared.currentUser {
                 UserManager.shared.saveUserCart(CartManager.shared.getCart(), forUser: user.id)
             }
-                let alertController = UIAlertController(title: "Товар добавлен в корзину", message: nil, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                present(alertController, animated: true, completion: nil)
+            
+            let alertController = UIAlertController(title: "Товар добавлен в корзину", message: nil, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
             
             CartManager.shared.updateCartView()
         }

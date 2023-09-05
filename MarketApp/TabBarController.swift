@@ -35,7 +35,7 @@ class TabBarController: UITabBarController {
                     CartManager.shared.updateCart(with: [savedCart])
                     UserManager.shared.saveUserCart(CartManager.shared.getCart(), forUser: user.id)
                 }
-                    self.mainViewController?.updateLocationButtonText()
+                self.mainViewController?.updateLocationButtonText()
             }
         } else {
             if let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {

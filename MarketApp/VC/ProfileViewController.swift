@@ -51,9 +51,6 @@ class ProfileViewController: UIViewController {
                     }
                     CartManager.shared.updateCartView()
                 }
-               
-                
-
             case .failure(let error):
                 print("Error fetching order history: \(error)")
             }
@@ -68,56 +65,56 @@ class ProfileViewController: UIViewController {
         loadUserOrderHistory()
         
         if let user = user {
-                nameLabel.text = "Имя: \(user.name.firstname.capitalized)"
-                surnameLabel.text = "Фамилия: \(user.name.lastname.capitalized)"
-                emailLabel.text = "Почта: \(user.email)"
-                
-                let selectedTheme = ThemeManager.shared.loadSelectedTheme(forUserId: user.id)
-                themeControl.selectedSegmentIndex = selectedTheme
-                themeChange()
+            nameLabel.text = "Имя: \(user.name.firstname.capitalized)"
+            surnameLabel.text = "Фамилия: \(user.name.lastname.capitalized)"
+            emailLabel.text = "Почта: \(user.email)"
+            
+            let selectedTheme = ThemeManager.shared.loadSelectedTheme(forUserId: user.id)
+            themeControl.selectedSegmentIndex = selectedTheme
+            themeChange()
         }
     }
     
     private func themeChange() {
-            if let user = user {
-                let selectedTheme = themeControl.selectedSegmentIndex
-                ThemeManager.shared.saveSelectedTheme(selectedTheme, forUserId: user.id)
-                ThemeManager.shared.applyTheme(selectedTheme)
-            }
+        if let user = user {
+            let selectedTheme = themeControl.selectedSegmentIndex
+            ThemeManager.shared.saveSelectedTheme(selectedTheme, forUserId: user.id)
+            ThemeManager.shared.applyTheme(selectedTheme)
         }
+    }
     
     private func showChangePasswordAlert() {
-            let alert = UIAlertController(title: "Изменение пароля", message: nil, preferredStyle: .alert)
-            alert.addTextField { textField in
-                textField.placeholder = "Введите старый пароль"
-                textField.isSecureTextEntry = true
-            }
-            alert.addTextField { textField in
-                textField.placeholder = "Введите новый пароль"
-                textField.isSecureTextEntry = true
-            }
-            alert.addTextField { textField in
-                textField.placeholder = "Повторите новый пароль"
-                textField.isSecureTextEntry = true
-            }
-            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-            let doneAction = UIAlertAction(title: "Готово", style: .default) { [weak self] _ in
-                self?.handlePasswordChange(alert: alert)
-            }
-            doneAction.isEnabled = false
-
-            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
-                let oldPassword = alert.textFields?[0].text ?? ""
-                let newPassword = alert.textFields?[1].text ?? ""
-                let repeatPassword = alert.textFields?[2].text ?? ""
-                doneAction.isEnabled = !oldPassword.isEmpty && !newPassword.isEmpty && !repeatPassword.isEmpty
-            }
-
-            alert.addAction(cancelAction)
-            alert.addAction(doneAction)
-
-            present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Изменение пароля", message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "Введите старый пароль"
+            textField.isSecureTextEntry = true
         }
+        alert.addTextField { textField in
+            textField.placeholder = "Введите новый пароль"
+            textField.isSecureTextEntry = true
+        }
+        alert.addTextField { textField in
+            textField.placeholder = "Повторите новый пароль"
+            textField.isSecureTextEntry = true
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        let doneAction = UIAlertAction(title: "Готово", style: .default) { [weak self] _ in
+            self?.handlePasswordChange(alert: alert)
+        }
+        doneAction.isEnabled = false
+
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: OperationQueue.main) { _ in
+            let oldPassword = alert.textFields?[0].text ?? ""
+            let newPassword = alert.textFields?[1].text ?? ""
+            let repeatPassword = alert.textFields?[2].text ?? ""
+            doneAction.isEnabled = !oldPassword.isEmpty && !newPassword.isEmpty && !repeatPassword.isEmpty
+        }
+
+        alert.addAction(cancelAction)
+        alert.addAction(doneAction)
+
+        present(alert, animated: true, completion: nil)
+    }
     
     private func handlePasswordChange(alert: UIAlertController) {
         guard let oldPassword = alert.textFields?[0].text,
@@ -139,8 +136,8 @@ class ProfileViewController: UIViewController {
         user?.password = newPassword
         
         if let updatedUser = user {
-                   UserManager.shared.updateUser(updatedUser)
-                   showAlert(message: "Пароль успешно изменен")
+            UserManager.shared.updateUser(updatedUser)
+            showAlert(message: "Пароль успешно изменен")
         }
     }
     
@@ -168,9 +165,9 @@ class ProfileViewController: UIViewController {
     }
 
     private func showAlert(message: String) {
-            let alert = UIAlertController(title: "Внимание", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Внимание", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     private func showLogOutAlert() {
@@ -192,19 +189,19 @@ class ProfileViewController: UIViewController {
         }
     }
     
-        private func updateTableViewVisibility() {
-            if userCarts.isEmpty {
-                let label = UILabel()
-                label.text = "Нет истории заказов"
-                label.textColor = .gray
-                label.textAlignment = .center
-                label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-                label.numberOfLines = 0
-                tableView.backgroundView = label
-                tableView.separatorStyle = .none
-            } else {
-                tableView.backgroundView = nil
-                tableView.separatorStyle = .singleLine
+    private func updateTableViewVisibility() {
+        if userCarts.isEmpty {
+            let label = UILabel()
+            label.text = "Нет истории заказов"
+            label.textColor = .gray
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+            label.numberOfLines = 0
+            tableView.backgroundView = label
+            tableView.separatorStyle = .none
+        } else {
+            tableView.backgroundView = nil
+            tableView.separatorStyle = .singleLine
         }
     }
 }
@@ -215,10 +212,10 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CartTableViewCell.identifier, for: indexPath) as! CartTableViewCell
-            let cart = userCarts[indexPath.row]
-            cell.configure(with: cart)
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CartTableViewCell.identifier, for: indexPath) as! CartTableViewCell
+        let cart = userCarts[indexPath.row]
+        cell.configure(with: cart)
+        return cell
     }
 }
 

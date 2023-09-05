@@ -7,12 +7,12 @@ class MapViewController: UIViewController {
     var selectedCity: String?
     
     override func viewDidLoad() {
-            super.viewDidLoad()
+        super.viewDidLoad()
         
-            if let city = selectedCity {
-                showMapFor(city: city)
-            }
+        if let city = selectedCity {
+            showMapFor(city: city)
         }
+    }
     
     func showMapFor(city: String) {
         let geocoder = CLGeocoder()

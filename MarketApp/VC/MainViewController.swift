@@ -16,4 +16,12 @@ class MainViewController: UIViewController {
     
     @IBAction func selectCategoryButton(_ sender: UIBarButtonItem) {
     }
+    
+    func updateLocationButtonText() {
+        if let currentUser = UserManager.shared.currentUser {
+            DispatchQueue.main.async {
+                self.locationButton.title = currentUser.address.city
+            }
+        }
+    }
 }

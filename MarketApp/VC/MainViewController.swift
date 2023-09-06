@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
     }
     
     private func selectCategory() {
-        let alertController = UIAlertController(title: "Select Category", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Выбор категории", message: nil, preferredStyle: .actionSheet)
         
         for category in ProductManager.shared.categories {
             alertController.addAction(UIAlertAction(title: category, style: .default, handler: { [weak self] _ in
@@ -92,7 +92,7 @@ class MainViewController: UIViewController {
             self?.fetchProducts()
         }))
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
         
         present(alertController, animated: true, completion: nil)
     }

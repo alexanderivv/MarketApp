@@ -28,15 +28,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALEXANDER IVANCHIKOV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1n-Ny-GW5">
+                                <rect key="frame" x="8" y="784.66666666666663" width="377" height="25.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cdg-bD-npu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="1Lb-mx-aUw"/>
                             <constraint firstItem="y9x-i4-wLa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DCE-GE-L8u"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a1n-Ny-GW5" secondAttribute="trailing" constant="8" id="Seo-Oo-fIp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="a1n-Ny-GW5" secondAttribute="bottom" constant="8" id="T2D-Li-msj"/>
                             <constraint firstItem="y9x-i4-wLa" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="bsg-dT-Z0q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cdg-bD-npu" secondAttribute="trailing" constant="16" id="o3K-tK-KB0"/>
                             <constraint firstItem="cdg-bD-npu" firstAttribute="top" secondItem="y9x-i4-wLa" secondAttribute="bottom" constant="24" id="x1t-zJ-gfd"/>
+                            <constraint firstItem="a1n-Ny-GW5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="xfI-ny-aFQ"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -18,13 +18,6 @@ class LoginViewController: UIViewController {
         
         setupPasswordTextField()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        loginTextField.text = ""
-        passwordTextField.text = ""
-    }
 
     @IBAction func loginButtonTapped(_ sender: Any) {
         loginProfile()

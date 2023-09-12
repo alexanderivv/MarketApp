@@ -51,7 +51,13 @@ class ProductTableViewCell: UITableViewCell {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.hidesWhenStopped = true
         addSubview(indicator)
-        indicator.center = CGPoint(x: bounds.midX, y: bounds.midY)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            indicator.centerXAnchor.constraint(equalTo: productImageView.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: productImageView.centerYAnchor)
+        ])
+
         activityIndicator = indicator
     }
 }

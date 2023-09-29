@@ -4,6 +4,7 @@ import PassKit
 class CartViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var payWithApplePayButtonLabel: UIButton!
     @IBOutlet weak var totalPriceLabel: UILabel!
 
     override func viewDidLoad() {
@@ -35,9 +36,11 @@ class CartViewController: UIViewController {
         if cartItems.isEmpty {
             tableView?.backgroundView = createEmptyCartLabel()
             tableView?.separatorStyle = .none
+            payWithApplePayButtonLabel.isEnabled = false
         } else {
             tableView?.backgroundView = nil
             tableView?.separatorStyle = .singleLine
+            payWithApplePayButtonLabel.isEnabled = true
         }
 
         tableView?.reloadData()

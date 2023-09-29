@@ -47,7 +47,7 @@ class TabBarController: UITabBarController {
             ThemeManager.shared.applyTheme(0)
             CartManager.shared.clearCart()
             CartManager.shared.updateCartView()
-            mainViewController?.locationButton.title = "Локация"
+            mainViewController?.locationButton.title = nil
         }
         self.isLoggedIn = isLoggedIn
     }

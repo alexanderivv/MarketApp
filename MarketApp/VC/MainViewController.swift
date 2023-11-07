@@ -108,6 +108,11 @@ class MainViewController: UIViewController {
         setupActivityIndicator()
         selectedCategory = nil
         fetchProducts()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setupActivityIndicator() {
@@ -116,6 +121,19 @@ class MainViewController: UIViewController {
         indicator.hidesWhenStopped = true
         view.addSubview(indicator)
         activityIndicator = indicator
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height - view.safeAreaInsets.bottom
+            tableView.contentInset.bottom = keyboardHeight
+            tableView.verticalScrollIndicatorInsets.bottom = keyboardHeight
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        tableView.contentInset = .zero
+        tableView.verticalScrollIndicatorInsets = .zero
     }
 }
 
